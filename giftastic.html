@@ -1,0 +1,158 @@
+<!-- 
+
+dc6zaTOxFJmzC
+dc6zaTOxFJmzC
+
+Path: /v1/gifs/search
+
+http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC 
+
+q: search phrase (ex. q= animals)
+limit: 100
+
+ -->
+<DOCTYPE html>
+<html lang="en"
+
+<head>
+	<meta charset="urtf-8">
+	<title>Giftastic</title>
+	<style type="text/css">
+	button,
+	div, 
+	form,
+	input {
+		margin: 10px;
+	}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">		
+	<h1>Animal Search</h1>
+
+	<!-- Search results will be dumped here -->
+	<div id="animal-view"></div>
+
+	<!-- Rendered buttons will be dumped here -->
+	<div id="button-view"></div>
+
+	<form id="movie-form">
+	<label for="animal-input">Add an Animal</label>
+	<input type="text" id="animal-input"><br>
+
+	<!-- Button triggers new movie to be added -->
+	<input id="add-animal" type="submit" value="Add an Animal">
+	</form>
+
+	<script src="http:.............">
+	</script>
+
+	<script type="text/javascript">
+
+	//Intial array of animals
+
+	var animals = ["dog", "cat"];
+
+	//Function for dumping the JSON content for each button into the div
+
+	function displayAnimalClips() {
+
+		var animal = $(this).attr("data-name");
+		var api = "http://api.giphy.com/v1/gifs/search?";
+		var apiKey = "&api_key=dc6zaTOxFJmzC";
+		var query = "&q=animals";
+
+
+		var queryUrl = api + apiKey + query;
+
+		ajax({
+			url: queryUrl,
+			method: "GET"
+		}).done(function(response) {
+			$("#animal-view").html(JSON.stringnify(response));
+			renderButtons();
+		});
+	}
+
+	//Function to display animals data
+	function renderButtons() {
+
+		//Deleting buttons prior to adding new movies
+		// (this is nessary otherwise you will have repeat buttons)
+		$("#buttons-view").empty();
+
+		//looping through the array of animals
+		for (var i-0; i < animals.length; i++) {
+
+			// then dynamically generate buttons for each animal in the array
+			// this code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+
+			var a = $("<button>");
+
+			//add a class of animal to the button
+			a.addClass("movie");
+
+			//add data attribute
+			a.attr("data-name", animals[i]);
+
+			//provide the initial button text
+			a.text(movies[i]);
+
+			//add button to the buttons-view div
+			$("#buttons-view").append(a);
+		}
+	}
+
+	//function to handle events when one button is clicked
+	$("#add-animal").on("click", function(event) {
+		event.preventDeafualt();
+
+		// this line grabs the input from textbox
+		var animal = $("#animal-input").val().trim();
+
+		// add movie from textbox textbox to our array
+		movies.push(animal);
+		console.log(animals)
+
+		// call renderButtons which handles the processing of array
+		renderButtons();
+	});
+
+	//function to display animal 
+	//using $(document).on instead of $(".animal").on to add event listenesto dynamically generated elements
+	$(document).on("click", "animal", displayAnimalClips);
+
+	//call renderButtons function to display initila buttons
+	renderButtons();
+
+	</script>
+	</div>
+	</body>
+	</html>
+	
+
+	//
+
+
+
+
+
+
+
+	}
+		)
+
+
+		}
+	}
+
+
+
+		})
+	}
+
+
+
+</html>
